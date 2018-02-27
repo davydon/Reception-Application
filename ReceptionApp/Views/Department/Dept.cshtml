@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ReceptionApp.Models.Department>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2>Departments</h2>
+
+
+    @using (Html.BeginForm("Index", "Department", FormMethod.Get))
+    {
+
+    <p>
+        <div class="pull-right">
+            Department: @Html.TextBox("DepartmentName")
+
+            <input type="submit" value="Search"  />
+        </div>
+    </p>
+
+    }
+<br />
+<div class="col-md-2">
+
+    @{Html.RenderAction("UserMenu", "Admin");}
+</div>
+<br />
+<table class=" table-responsive table-bordered well"style="width:80%">
+    <tr class="tab-head">
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Intercom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Floor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HOD)
+        </th>
+        
+    </tr >
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Intercom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Floor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOD)
+        </td>
+        
+    </tr>
+}
+
+</table>

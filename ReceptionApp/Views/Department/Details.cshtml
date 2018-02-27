@@ -1,0 +1,51 @@
+﻿@model ReceptionApp.Models.Department
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal well">
+        <h2>Details</h2>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Intercom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Intercom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index","Department")
+</p>

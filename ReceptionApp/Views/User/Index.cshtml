@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ReceptionApp.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users List</h2>
+
+
+    @using (Html.BeginForm("Index", "User", FormMethod.Get))
+    {
+        <p>
+            <div class="pull-right">
+                Surname: @Html.TextBox("Surname")
+                <input type="submit" value="Search" />
+
+            </div>
+        </p>
+    }
+<div class="row">
+    <div class="margin-top">
+        <a href="@Url.Action("Create","User")" class="btn btn-primary ">
+            <span class="glyphicon"></span>New Users
+        </a>
+
+    </div>
+</div>
+   
+
+<div class="col-md-2">
+
+    @{Html.RenderAction("SideMenu", "Admin");}
+</div>
+    <table class=" table-responsive table-bordered well" style="width:80%">
+        <tr class="tab-head">
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+
+                <td>
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Edit","User", new  {id = item.Id })" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Delete","User", new  {id = item.Id })" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+    

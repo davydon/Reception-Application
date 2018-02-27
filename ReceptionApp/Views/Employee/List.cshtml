@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ReceptionApp.Models.Employee>
+
+@{
+    ViewBag.Title = "Employee";
+}
+
+
+
+
+<h2>Employees</h2>
+
+<p>
+    @using (Html.BeginForm("List", "Employee", FormMethod.Get))
+    {
+        <div class="pull-right">
+            Surname: @Html.TextBox("Surname")
+            <input type="Submit" value="Search" />
+        </div>
+    }
+</p>
+<br />
+
+<div class="col-md-2">
+
+    @{Html.RenderAction("UserMenu", "Admin");}
+</div>
+<br />
+<table class="  table-bordered well" style="width:80%">
+    <tr class="tab-head">
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        
+    </tr>
+}
+
+</table>

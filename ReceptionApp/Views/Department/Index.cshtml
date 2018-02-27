@@ -1,0 +1,99 @@
+﻿@model IEnumerable<ReceptionApp.Models.Department>
+
+@{
+    ViewBag.Title = "Departments";
+}
+
+<h2>Departments</h2>
+
+
+    
+    @using (Html.BeginForm("Index", "Department", FormMethod.Get))
+    {
+     
+        <p>
+            <div class="pull-right">
+                Department: @Html.TextBox("DepartmentName")
+
+                <input type="submit"  value="Search"  />
+            </div>
+       </p>
+     
+    }
+
+<div class="row">
+    <div class="margin-top">
+
+        <a href="@Url.Action("Create","Department")" class="btn btn-primary">
+            <span class="glyphicon "></span>New Department
+        </a>
+
+    </div>
+</div>
+    
+<div class="col-md-2">
+
+    @{Html.RenderAction("SideMenu", "Admin");}
+</div>
+
+    <table class=" table-responsive table-bordered well" style="width:80%">
+        <tr class="tab-head">
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Intercom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Floor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HOD)
+            </th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Intercom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Floor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HOD)
+                </td>
+                <td>
+                   <div class="col-md-6">
+                       <a href="@Url.Action("Edit","Department", new { id = item.Id })" class="btn btn-primary">
+                           <span class="glyphicon glyphicon-edit"></span>
+                       </a>
+                   </div>
+                </td>
+
+                <td>
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Details","Department", new  {id = item.Id })" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-ban-circle"></span>
+                        </a>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="col-md-6">
+                        <a href="@Url.Action("Delete","Department", new {id = item.Id })" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>

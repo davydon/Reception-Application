@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "UserMenu";
+}
+
+<div class="panel panel-body">
+
+
+
+    <a href="@Url.Action("Index","Visitor")" class="btn btn-primary btn-block">
+        <span class="glyphicon"></span>
+        Visitors
+    </a>
+
+    <br />
+
+    <a href="@Url.Action("List","Employee")" class="btn btn-primary btn-block">
+        <span class="glyphicon"></span>
+        Employees
+    </a>
+
+    <br />
+
+    <a href="@Url.Action("Dept","Department")" class="btn btn-primary btn-block">
+        <span class="glyphicon"></span>
+        Department
+    </a>
+
+    <br />
+
+    <a href="@Url.Action("Logout","User")" class="btn btn-primary btn-block">
+        <span class="glyphicon"></span>
+        Logout
+    </a>
+
+
+</div>

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<ReceptionApp.Models.Visitor>
+
+@{
+    ViewBag.Title = "All Visitors";
+}
+
+
+
+
+<h2>All Visitors</h2>
+
+<p>
+    @using (Html.BeginForm("Index", "Visitor", FormMethod.Get))
+    {
+        <div class="pull-right">
+
+            Surname:@Html.TextBox("Surname")
+            <input type="submit" value="Search" />
+        </div>
+    }
+
+
+
+    <div class="margin-top"><a href="@Url.Action("Create","Visitor")" class="btn btn-primary ">
+        <span class="glyphicon glyphicon-plus"></span>Visitors</a>
+
+    </div>
+
+
+</p>
+
+<div class="col-md-2">
+
+    @{Html.RenderAction("UserMenu", "Admin");}
+</div>
+
+<table class=" table-responsive table-bordered well"style="width:80%">
+    <tr class="tab-head">
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Staff)
+        </th>
+        <th>Details</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staff)
+        </td>
+        <td>
+            
+            <div class="col-md-6">
+                <a href="@Url.Action("Details","Visitor", new  {id = item.Id })" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-ban-circle"></span>
+                </a>
+            </div>
+            
+        </td>
+    </tr>
+}
+
+</table>

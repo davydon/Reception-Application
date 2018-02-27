@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "SideMenu";
+}
+
+
+<div class="panel panel-body">
+   
+
+
+
+    <div class="">
+
+        <a href="@Url.Action("Index","Employee")" class="btn btn-primary btn-block">
+            <span class="glyphicon"></span>
+            Employees
+        </a>
+
+        <br />
+
+        <a href="@Url.Action("Index","User")" class="btn btn-primary btn-block">
+            <span class="glyphicon"></span>
+            Users
+        </a>
+
+        <br />
+
+        <a href="@Url.Action("Index","Department")" class="btn btn-primary btn-block">
+            <span class="glyphicon"></span>
+            Departments
+        </a>
+
+        <br />
+
+        <a href="@Url.Action("AdminList","Visitor")" class="btn btn-primary btn-block">
+            <span class="glyphicon"></span>
+            Visitors
+        </a>
+
+        <br />
+
+        <a href="@Url.Action("Logout","Admin")" class="btn btn-primary btn-block">
+            <span class="glyphicon"></span>
+            Logout
+        </a>
+
+    </div>
+
+</div>

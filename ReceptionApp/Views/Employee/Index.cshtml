@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ReceptionApp.Models.Employee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>All Employees</h2>
+
+<p >
+    @using (Html.BeginForm("Index", "Employee", FormMethod.Get))
+    {
+        <div class="pull-right">
+            Surname: @Html.TextBox("Surname")
+            
+            <input type="submit" value="Search" />
+            
+        </div>
+    }
+<div class="row">
+
+    <div class=" margin-top">
+        <a href="@Url.Action("Create","Employee")" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span>New Employee
+        </a>
+
+    </div>
+
+</div>
+</p>
+
+<div class="col-md-2">
+
+    @{Html.RenderAction("SideMenu","Admin");}
+</div>
+
+<table class="  table-bordered well" style="width:80%">
+    <tr class="tab-head">
+        <th>
+            @Html.DisplayNameFor(model => model.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>Edit</th>
+        <th>Details</th>
+        <th>Delete</th>
+
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+
+        <td>
+            <div class="col-md-6">
+
+                <a href="@Url.Action("Edit","Employee",new { id=item.Id })" class="btn btn-primary ">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </div>
+        </td>
+
+        <td>
+            <div class="col-md-6">
+
+                <a href="@Url.Action("Details","Employee",new { id=item.Id })" class="btn btn-primary ">
+                    <span class="glyphicon glyphicon-ban-circle"></span>
+                </a>
+            </div>
+        </td>
+
+        <td>
+            <div class="col-md-6">
+
+                <a href="@Url.Action("Delete","Employee",new { id=item.Id })" class="btn btn-primary ">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
